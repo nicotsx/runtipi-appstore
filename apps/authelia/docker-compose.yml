@@ -1,0 +1,50 @@
+services:
+  autheila:
+    image: authelia/authelia:4.38.15
+    container_name: autheila
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=${TZ}
+      - AUTHELIA_IDENTITY_VALIDATION_RESET_PASSWORD_JWT_SECRET_FILE=/run/secrets/authelia_jwt_secret
+      - AUTHELIA_SESSION_SECRET_FILE=/run/secrets/authelia_session_secret
+      - AUTHELIA_STORAGE_ENCRYPTION_KEY_FILE=/run/secrets/authelia_storage_encryption_key
+    secrets:
+      - authelia_jwt_secret
+      - authelia_storage_encryption_key
+      - authelia_session_secret
+    volumes:
+      - ${APP_DATA_DIR}/data/config:/config
+      - ${APP_DATA_DIR}/data/projects:/projects
+      - ${ROOT_FOLDER_HOST}/app-data:/runtipi/app-data
+      - ${ROOT_FOLDER_HOST}/user-config:/runtipi/user-config
+    ports:
+      - ${APP_PORT}:9091
+    restart: unless-stopped
+    networks:
+      - tipi_main_network
+    labels:
+      # Main
+      traefik.enable: true
+      traefik.http.middlewares.autheila-web-redirect.redirectscheme.scheme: https
+      traefik.http.services.autheila.loadbalancer.server.port: 8443
+      # Web
+      traefik.http.routers.autheila-insecure.rule: Host(`${APP_DOMAIN}`)
+      traefik.http.routers.autheila-insecure.entrypoints: web
+      traefik.http.routers.autheila-insecure.service: autheila
+      traefik.http.routers.autheila-insecure.middlewares: autheila-web-redirect
+      # Websecure
+      traefik.http.routers.autheila.rule: Host(`${APP_DOMAIN}`)
+      traefik.http.routers.autheila.entrypoints: websecure
+      traefik.http.routers.autheila.service: autheila
+      traefik.http.routers.autheila.tls.certresolver: myresolver
+      # Local domain
+      traefik.http.routers.autheila-local-insecure.rule: Host(`autheila.${LOCAL_DOMAIN}`)
+      traefik.http.routers.autheila-local-insecure.entrypoints: web
+      traefik.http.routers.autheila-local-insecure.service: autheila
+      traefik.http.routers.autheila-local-insecure.middlewares: autheila-web-redirect
+      # Local domain secure
+      traefik.http.routers.autheila-local.rule: Host(`autheila.${LOCAL_DOMAIN}`)
+      traefik.http.routers.autheila-local.entrypoints: websecure
+      traefik.http.routers.autheila-local.service: autheila
+      traefik.http.routers.autheila-local.tls: true
