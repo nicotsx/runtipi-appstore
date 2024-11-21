@@ -1,6 +1,6 @@
 ## Authelia is an open-source authentication and authorization server.
 
-Authelia is an open-source authentication and authorization server providing two-factor authentication and single sign-on (SSO) for your applications via a web portal. It acts as a companion for reverse pr>
+Authelia is an open-source authentication and authorization server providing two-factor authentication and single sign-on (SSO) for your applications via a web portal. It acts as a companion for reverse proxy.
 
 Documentation is available at https://www.authelia.com/.
 
