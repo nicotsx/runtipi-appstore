@@ -1,20 +1,43 @@
+{
 "$schema": "../schema.json",
 "name": "Authelia",
 "available": true,
 "exposable": true,
 "port": 9091,
-"env_variable": "authelia_jwt_secret",
-"env_variable": "authelia_session_secret",
-"env_variable": "authelia_storage_encryption_key",
 "id": "authelia",
-"tipi_version": 1,
-"version": "4.38.17",
-"categories": ["security"],
-"description": "Authelia is an open-source authentication and authorization server providing two-factor authentication and single sign-on (SSO) for your applications via a web portal.",
-"short_desc": "Authelia",
-"author": "clems4ever",
-"source": "https://github.com/authelia/authelia",
-"supported_architectures": ["arm64", "amd64"],
-"created_at": 1691943801422,
-"updated_at": 1731953831000
+"form_fields": [
+    {
+      "type": "text",
+      "label": "authelia_jwt_secret",
+      "max": 50,
+      "min": 3,
+      "required": true,
+      "env_variable": "authelia_jwt_secret"
+    },
+    {
+      "type": "text",
+      "label": "authelia_session_secret",
+      "max": 50,
+      "min": 3,
+      "required": true,
+      "env_variable": "authelia_session_secret"
+    },
+    {      
+      "type": "text",
+      "label": "authelia_storage_encryption_key",
+      "max": 50,
+      "min": 3,
+      "required": true,
+      "env_variable": "authelia_storage_encryption_key"}
+  ],
+  "tipi_version": 1,
+  "version": "4.38.17",
+  "categories": ["security"],
+  "description": "Authelia is an open-source authentication and authorization server providing two-factor authentication and single sign-on (SSO) for your applications via a web portal.",
+  "short_desc": "Authelia",
+  "author": "clems4ever",
+  "source": "https://github.com/authelia/authelia",
+  "supported_architectures": ["arm64", "amd64"],
+  "created_at": 1691943801422,
+  "updated_at": 1731953831000
 }
