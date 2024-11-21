@@ -12,7 +12,7 @@
       "max": 64,
       "min": 3,
       "required": true,
-      "env_variable": "authelia_jwt_secret"
+      "env_variable": "AUTHELIA_IDENTITY_VALIDATION_RESET_PASSWORD_JWT_SECRET"
     },
     {
       "type": "text",
@@ -20,7 +20,7 @@
       "max": 64,
       "min": 3,
       "required": true,
-      "env_variable": "authelia_session_secret"
+      "env_variable": "AUTHELIA_SESSION_SECRET"
     },
     {      
       "type": "text",
@@ -28,7 +28,7 @@
       "max": 64,
       "min": 3,
       "required": true,
-      "env_variable": "authelia_storage_encryption_key"}
+      "env_variable": "AUTHELIA_STORAGE_ENCRYPTION_KEY"}
   ],
   "tipi_version": 1,
   "version": "4.38.17",
