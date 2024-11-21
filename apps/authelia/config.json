@@ -9,7 +9,7 @@
     {
       "type": "text",
       "label": "authelia_jwt_secret",
-      "max": 50,
+      "max": 64,
       "min": 3,
       "required": true,
       "env_variable": "authelia_jwt_secret"
@@ -17,7 +17,7 @@
     {
       "type": "text",
       "label": "authelia_session_secret",
-      "max": 50,
+      "max": 64,
       "min": 3,
       "required": true,
       "env_variable": "authelia_session_secret"
@@ -25,7 +25,7 @@
     {      
       "type": "text",
       "label": "authelia_storage_encryption_key",
-      "max": 50,
+      "max": 64,
       "min": 3,
       "required": true,
       "env_variable": "authelia_storage_encryption_key"}
