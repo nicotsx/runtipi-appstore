@@ -2,7 +2,7 @@
   "services": [
     {
       "name": "mind",
-      "image": "mrcas/mind:v1.4.0",
+      "image": "mrcas/mind:v1.4.1",
       "isMain": true,
       "internalPort": 8080,
       "environment": {
@@ -15,5 +15,6 @@
         }
       ]
     }
-  ]
+  ],
+  "$schema": "../dynamic-compose-schema.json"
 }
