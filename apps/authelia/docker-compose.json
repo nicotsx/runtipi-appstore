@@ -1,0 +1,37 @@
+{
+    "$schema": "../dynamic-compose-schema.json",
+    "services": [
+        {
+            "name": "authelia",
+            "image": "authelia/authelia:4.38.15",
+            "environment": {
+                "PUID": "1000",
+                "PGID": "1000",
+                "TZ": "${TZ}",
+                "AUTHELIA_IDENTITY_VALIDATION_RESET_PASSWORD_JWT_SECRET": "${AUTHELIA_IDENTITY_VALIDATION_RESET_PASSWORD_JWT_SECRET}",
+                "AUTHELIA_SESSION_SECRET": "${AUTHELIA_SESSION_SECRET}",
+                "AUTHELIA_STORAGE_ENCRYPTION_KEY": "${AUTHELIA_STORAGE_ENCRYPTION_KEY}"
+            },
+            "volumes": [
+                {
+                    "hostPath": "${APP_DATA_DIR}/data/config",
+                    "containerPath": "/config"
+                },
+                {
+                    "hostPath": "${APP_DATA_DIR}/data/projects",
+                    "containerPath": "/projects"
+                },
+                {
+                    "hostPath": "${ROOT_FOLDER_HOST}/app-data",
+                    "containerPath": "/runtipi/app-data"
+                },
+                {
+                    "hostPath": "${ROOT_FOLDER_HOST}/user-config",
+                    "containerPath": "/runtipi/user-config"
+                }
+            ],
+            "isMain": true,
+            "internalPort": 9091
+        }
+    ]
+}
