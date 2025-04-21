@@ -30,8 +30,8 @@
       "required": true,
       "env_variable": "AUTHELIA_STORAGE_ENCRYPTION_KEY"}
   ],
-  "tipi_version": 5,
-  "version": "4.38.17",
+  "tipi_version": 6,
+  "version": "4.39.1",
   "categories": ["security"],
   "description": "Authelia is an open-source authentication and authorization server providing two-factor authentication and single sign-on (SSO) for your applications via a web portal.",
   "short_desc": "Authelia",
